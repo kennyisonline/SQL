@@ -1,0 +1,23 @@
+Create Table Electronics (id INTEGER PRIMARY KEY, name TEXT, price NUMERIC, aisle INTEGER, quantity INTEGER);
+
+INSERT INTO Electronics VALUES 
+(1, "TV", 1000, 5, 10),
+(2, "Headphone",300, 5, 30),
+(3, "Cellphone", 900, 2, 25),
+(4, "Charger", 40, 1, 1000),
+(5, "Cable", 10, 5, 900),
+(6, "Adapter", 20, 3, 400),
+(7, "Monitor", 400, 4, 25),
+(8, "Keyboard", 50, 3, 250),
+(9, "Mouse", 20, 2, 1250),
+(10, "Printer", 250, 1, 70),
+(11, "HardDiskDrive", 350, 4, 40),
+(12, "Battery", 10, 2, 2000),
+(13, "Cartridge", 110, 3, 50),
+(14, "Shredder", 90, 1, 450),
+(15, "ExtensionPowerOutlet", 20, 4, 500)
+;
+
+SELECT * FROM Electronics ORDER BY price;
+SELECT SUM (quantity) FROM Electronics;
+
