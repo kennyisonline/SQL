@@ -60,6 +60,7 @@ VALUES
 SELECT *
 FROM fortune_companies
 WHERE employees >= 200000;
+
 --2. Show all companies categorized by their industry and profitability index in billions of dollars
 --Where companies with revenue of 300 billion or greater are 'ExtremelyProfitable'
 ,those with revenue of 200 billion or greater be 'HighlyProfitable'
@@ -71,6 +72,7 @@ SELECT company_name, industry, CASE WHEN revenue >=300 THEN 'ExtremelyProfitable
             END AS ProfitabliltyIndexInBillionsOfDollars
 FROM fortune_companies
 ORDER BY industry, ProfitabliltyIndexInBillionsOfDollars ASC;
+
 --3. How many extremely profitable and highly profitable companies are in the data?
 SELECT COUNT(company_name), industry, CASE WHEN revenue >=300 THEN 'ExtremelyProfitable'
             WHEN revenue >=200 THEN 'HighlyProfitable'
@@ -81,6 +83,7 @@ FROM fortune_companies
 GROUP BY industry
 HAVING ProfitabliltyIndexInBillionsOfDollars IN ('ExtremelyProfitable', 'HighlyProfitable') 
 ORDER BY industry, ProfitabliltyIndexInBillionsOfDollars ASC;
+
 --4. Which companies have the maximum and minimum revenue?
 SELECT company_name, MIN(revenue) AS MAXandMIN_Revenue
 FROM fortune_companies
@@ -96,11 +99,13 @@ UNION ALL
 SELECT company_name, revenue
 FROM fortune_companies
 WHERE revenue = (SELECT MIN(revenue) from fortune_companies);
+
 --5. What is the average number of employees per industry?
 SELECT industry, ROUND(AVG(employees)) AS AverageNumOfEmployees
 FROM fortune_companies
 GROUP BY industry
 ORDER BY AverageNumOfEmployees DESC;
+
 --6. What is the total revenue in trillions of dollars contributed towards the GDP of the United States by all Fortune500 companies?
 SELECT ROUND(SUM(revenue/1000),2) AS TotalRevenueByFortune500CompaniesInTrillions
 FROM fortune_companies;
