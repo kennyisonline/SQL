@@ -55,9 +55,14 @@ FROM BIT_DB.spotifydata
 ORDER BY popularity DESC
 LIMIT 10;
 --6. Then finally I determined what the average danceability was for the 10 most popular songs
-SELECT AVG(danceability) FROM (SELECT danceability
-FROM BIT_DB.Spotifydata
-ORDER BY popularity DESC
-LIMIT 10);/*Dont know why this code doesn't work*/
-
+/* I used a CTE to solve this problem*/
+WITH Top10Danceable AS
+(
+SELECT Spotifydata.danceability, Spotifydata.track_name AS TrackName, Spotifydata.popularity 
+FROM Spotifydata
+ORDER BY Spotifydata.popularity DESC
+LIMIT 10
+)
+SELECT AVG(danceability)
+FROM Top10Danceable;
 
